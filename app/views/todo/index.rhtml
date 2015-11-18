@@ -1,0 +1,45 @@
+<script type="text/javascript">
+function marked(i) {
+  Effect.Fade($('todo_' + i));
+}
+</script>
+
+<form method="post">
+<div id="menu" class="menu">
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+<tr bgcolor="#BA4436"><td valign="top">
+
+<input type="text" id="new" name="new" size="60" style="font-size: 14px;">
+
+</td><td valign="top" align="right">
+
+<select name="cat" style="font-size: 18px;" onchange="submit();">
+<% @cats.each do |c| -%>
+<option value="<%= c %>" <%= (c == @current_category ? "selected" : "") %>><%= c %></option>
+<% end -%>
+</select>
+</td></tr>
+</table>
+</div>
+
+<br><br>
+
+<% if @todo.undone.empty? -%>
+<i>Rawesome, there's nothing to do in this list.</i><br>
+<br>
+<% else -%>
+<table width="85%" border="0" cellpadding="3" cellspacing="2">
+<% @todo.undone.each do |t| -%>
+<tr bgcolor="#eeeeee" id="todo_<%= t.id %>"><td valign="top" width="2%" align="center">
+<%= link_to_remote image_tag("square.png", :border => 0), :url => { :action => "mark", :id => t.id }, :complete => "marked(#{t.id});" %><br>
+</td><td valign="top">
+<%= h(t.text) %>
+</td><td valign="top" width="5%" align="center">
+<%= link_to image_tag("stock_edit-16.png", :border => 0), :action => "edit", :id => t.id %>
+</td></tr>
+<% end -%>
+</table>
+
+<% end -%>
+</form>
+

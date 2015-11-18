@@ -1,0 +1,27 @@
+<html>
+<title>To Do</title>
+<head>
+<style>
+body, td {
+  font-family: Arial;
+  font-size: 17px;
+}
+
+.menu {
+  position: fixed;
+  width: 97%;
+  z-index: 2;
+}
+</style>
+<%= javascript_include_tag "prototype" %>
+<%= javascript_include_tag "effects" %>
+<%= javascript_include_tag "scriptaculous" %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+
+</html>
+

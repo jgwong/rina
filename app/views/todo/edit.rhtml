@@ -1,0 +1,19 @@
+<form method="POST">
+<h3><%= @todo.category %> - Edit entry</h3>
+
+<% if @item.nil? -%>
+<i>Item not found. Duh.</i><br>
+<br?
+<%= link_to "Cancel", :action => "index" %><br>
+<br>
+
+<% else -%>
+
+<input type="text" name="text" value="<%= h(@item.text) %>" size="60" style="font-size: 16px;">
+<input type="submit" value="Edit">
+or <%= link_to "Cancel", :action => "index" %><br>
+<br>
+
+<% end -%>
+</form>
+
